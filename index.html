@@ -2,7 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financování rekonstrukce | Liberec</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,680&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
@@ -251,7 +251,6 @@
 </style>
 </head>
 <body>
-
 <div class="wrap">
 
   <div class="topbar">
@@ -266,11 +265,11 @@
     <div class="hero-copy">
       <span class="eyebrow">Rekonstrukce a prodej · Zajištěno nemovitostí</span>
       <h1>Podílejte se na <em>financování rekonstrukce</em> bytu v centru Liberce.</h1>
-      <p class="lede">Byt na 8.&nbsp;března je již koupený. Teď hledáme kapitál na jeho rekonstrukci a prodej. 119&nbsp;m² podlahové plochy plus 15&nbsp;m² terasa, v památkově chráněném domě. Vaše investice je zajištěná samotnou nemovitostí.</p>
+      <p class="lede">Byt na 8.&nbsp;března je již koupený. Teď hledáme kapitál na jeho rekonstrukci a prodej. 119&nbsp;m² podlahové plochy plus 15&nbsp;m² terasa, v památkově chráněném domě. Vaše investice je zajištěná zástavou na pozemku s rekreační chatou v hodnotě přibližně 2&nbsp;000&nbsp;000 Kč.</p>
       <div class="metric-strip">
         <div class="m"><div class="v num">6,20 mil.<small> Kč</small></div><div class="l">Kupní cena</div></div>
         <div class="m"><div class="v num">9,46 mil.<small> Kč</small></div><div class="l">Předpokládaná realistická prodejní cena</div></div>
-        <div class="m"><div class="v num">5–7<small> % p.a.</small></div><div class="l">Rozpětí výnosu investora</div></div>
+        <div class="m"><div class="v num">7<small> % p.a.</small></div><div class="l">Pevný výnos investora</div></div>
       </div>
     </div>
     <a class="hero-figure-link" href="https://ibb.co/album/5kzXTy" target="_blank" rel="noopener noreferrer" aria-label="Zobrazit více fotografií bytu ve fotoalbu (otevře se v nové kartě)">
@@ -412,14 +411,14 @@
         <span class="eyebrow">Investiční kalkulačka</span>
         <h2>Kolik vám vydělá váš kapitál</h2>
       </div>
-      <div class="section-note">Sazba roste s vloženou částkou: čím více investujete, tím vyšší úrok.</div>
+      <div class="section-note">Pevná sazba 7 % p.a. platí pro každou investici bez ohledu na její výši.</div>
     </div>
 
     <div class="calc">
       <div class="calc-head">
         <div>
           <h3>Nastavte částku posuvníkem</h3>
-          <p>Sazba plynule roste z 5&nbsp;% p.a. při 90&nbsp;000 Kč až na 7&nbsp;% p.a. při 1&nbsp;600&nbsp;000 Kč.</p>
+          <p>Sazba je pevná, 7&nbsp;% p.a. pro každou investovanou částku od 90&nbsp;000 Kč do 1&nbsp;600&nbsp;000 Kč.</p>
         </div>
       </div>
       <div class="calc-body">
@@ -437,15 +436,15 @@
         <div class="outputs">
           <div class="output-row rate">
             <span class="l">Vaše sazba</span>
-            <span class="v" id="outRate">5,54 % p.a.</span>
+            <span class="v" id="outRate">7,00 % p.a.</span>
           </div>
           <div class="output-row">
             <span class="l">Úrok za dobu držení (~14 měsíců)</span>
-            <span class="v num" id="outHoldInterest">32 334 Kč</span>
+            <span class="v num" id="outHoldInterest">40 833 Kč</span>
           </div>
           <div class="output-row hero-output">
             <span class="l">Celkem k vyplacení při prodeji</span>
-            <span class="v num" id="outExitTotal">532 334 Kč</span>
+            <span class="v num" id="outExitTotal">540 833 Kč</span>
           </div>
         </div>
       </div>
@@ -460,7 +459,7 @@
     <div class="section-head">
       <div>
         <span class="eyebrow">Jak je investice strukturovaná</span>
-        <h2>Zajištěno bytem, ne slibem</h2>
+        <h2>Zajištěno pozemkem s chatou, ne slibem</h2>
       </div>
     </div>
     <div class="security">
@@ -471,8 +470,8 @@
       </div>
       <div class="sec-card">
         <div class="n">02</div>
-        <h4>Zajištěním je samotná nemovitost</h4>
-        <p>Investice je zajištěná bytem, hmatatelným aktivem na atraktivní adrese v centru města, ne pouze podnikatelským plánem nebo odhadem.</p>
+        <h4>Zajištěním je pozemek s rekreační chatou</h4>
+        <p>Investice je zajištěná zástavním právem k samostatnému pozemku s malou rekreační chatou, odhadovanému na přibližně 2&nbsp;000&nbsp;000 Kč. Jde o hmatatelné zajištění, nezávislé na rekonstruovaném bytě.</p>
       </div>
       <div class="sec-card">
         <div class="n">03</div>
@@ -496,13 +495,11 @@
 
 <script>
 (function(){
-  var MIN_A = 90000, MIN_R = 0.05, MAX_A = 1600000, MAX_R = 0.07;
+  var MIN_A = 90000, MAX_A = 1600000, RATE = 0.07;
   var HOLD_MONTHS = 14;
 
   function rateFor(a){
-    if(a <= MIN_A) return MIN_R;
-    if(a >= MAX_A) return MAX_R;
-    return MIN_R + (a - MIN_A) / (MAX_A - MIN_A) * (MAX_R - MIN_R);
+    return RATE;
   }
   function fmtKc(n){
     return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
@@ -568,5 +565,6 @@
   setAmount(500000);
 })();
 </script>
+
 </body>
 </html>
